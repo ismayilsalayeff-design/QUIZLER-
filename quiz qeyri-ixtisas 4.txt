@@ -1,0 +1,151 @@
+####1
+x=float(input("x-in kordinatlarini daxil edin: "))
+y=float(input("y-in kordinatlarini daxil edin: "))
+if x>0:
+    if y>=1/x and y>=x:
+        print("Oblast daxilindedir")
+    else:
+        print("Oblast daxilinde deyil")
+elif x<0:
+    if y<=1/x and y<=x:
+        print("Oblast daxilindedir")
+    else:
+        print("Oblast daxilinde deyil")
+
+
+####2(Selection sort ilə həlli)(Həlli uzatmışam təkcə selection tətbiq etmək istədim)
+
+def maks(y):
+    my_max=y%10
+    y=y//10
+    while y!=0:
+        if my_max<=y%10:
+            my_max=y%10
+        y=y//10
+    return my_max
+def mini(z):
+    my_min=z%10
+    z=z//10
+    while z!=0:
+        if my_min>=z%10:
+            my_min=z%10
+        z=z//10
+    return my_min
+def ferqli(p):
+    a=p//100
+    b=p//10%10
+    c=p%10
+    if a==b or a==c or b==c:
+        return False
+    return True
+def varmi(c,r):
+    a=c//100
+    b=c//10%10
+    d=c%10
+    if a==r or b==r or d==r:
+        return True
+    return False
+    
+def selection(t):
+    say=0
+    for i in t:
+        say+=1
+    for i in range(say-1):
+        boyu=i
+        for j in range(i+1,say):
+            if t[boyu]<t[j]:
+                boyu=j
+        if boyu!=i:
+            t[boyu],t[i]=t[i],t[boyu]
+    return t
+    
+eded=int(input("Bir eded daxil edin: "))
+if maks(eded)==mini(eded):
+    ededler=[i for i in range(100,1000) if ferqli(i)and varmi(i,maks(eded))]
+else:
+    ededler=[i for i in range(100,1000) if ferqli(i) and varmi(i,maks(eded)) and varmi(i,mini(eded))]
+print(f"En boyuk reqem: {maks(eded)}")
+print(f"En kicik reqem: {mini(eded)}")
+print(f"Yaradilan 3reqemli eded: {selection(ededler)[0]}")
+
+####3
+def pol(x):
+    x2=x
+    ust=-1 #quvvete gore -1 qoydum ust de problem  olmasin
+    while x2!=0:
+        ust+=1
+        x2=x2//10 
+    x1=x
+    eded=0
+    while x1!=0:
+        eded=eded+(x1%10)*10**ust
+        ust-=1
+        x1=x1//10
+    if x==eded:
+        return True
+    return False
+start,end=map(int,input("Araligi daxil edin: ").split("-"))
+for i in range(start,end+1):
+    if pol(i) and pol(i**2):
+        print(f"{i} (kvadrati: {i**2})")
+
+
+####4
+def ikilik(x):
+    while x!=0:
+        if x%10>1:
+            return False
+        x=x//10
+    return True
+def onluq(y):
+    eded=0
+    ust=0
+    while y!=0:
+        eded=eded+(y%10)*2**ust
+        ust+=1
+        y=y//10
+    return eded
+def sade(z):
+    if z==1:
+        return False
+    for i in range(2,z//2+1):
+        if z%i==0:
+            return False
+    return True
+iki=int(input("ikilik ededi daxil: "))
+if ikilik(iki):
+    print(f"1.Onluq qarsiligi: {onluq(iki)}")
+    if sade(onluq(iki)):
+        print(f"2.Analiz neticesi: {onluq(iki)} sade ededdir")
+    else:
+        print(f"2.Analiz neticesi: {onluq(iki)} sade eded deyil")
+else:
+    print("Bu eded ikilik say sisteminde deyil")
+
+####5
+def kvadrat(x):
+    if x**0.5==x**0.5//1:
+        return True
+    return False
+def cem(y):
+    c=0
+    while y!=0:
+        c=c+y%10
+        y=y//10
+    return c
+
+start,end=map(int,input("Araligi daxil edin: ").split("-"))
+for i in range(start,end+1):
+    if kvadrat(i/cem(i)):
+        print(f" Eded {i} \t| Sert: {i} / {cem(i)} = {i//cem(i)}")
+    
+
+
+
+
+
+    
+        
+    
+        
+ 

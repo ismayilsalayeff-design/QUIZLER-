@@ -1,0 +1,103 @@
+####1
+x=float(input("x-in kordinatini daxil edin: "))
+y=float(input("y-in kordinatini daxil edin: "))
+if x**2+y**2<=20 and x>=0 and y<=x+1:
+    print("Oblast daxilindedir")
+else:
+    print("Oblast daxilinde deyil")
+
+####2
+def bolencut(x):
+    cem=0
+    for i in range(1,x+1):
+        if x%i==0 and i%2==0:
+            cem+=i
+            
+    return cem
+def cixart(y):
+    bos=""
+    for i in range(1,y+1):
+        if y%i==0 and i%2==0:
+            bos+="+"+str(i)
+    return bos[1:]
+n=int(input("Neçe eded daxil edeceksiniz: "))
+for i in range(1,n+1):
+    eded=int(input(f"{i}-ci ededi daxil edin: "))
+    if eded>0:
+        if bolencut(eded)>0:
+            print(f"{cixart(eded)}={bolencut(eded)}")
+        else:
+            print(f"(Cut bolen yoxdur, {bolencut(eded)})")
+    else:
+        print("Eded uygun deyil! Proses dayandirilir.")
+        break
+
+####3
+def hell(x):
+    hasil=1
+    while x!=0:
+        hasil=hasil*(x%10)
+        x=x//10
+    return hasil
+def cixart(y):
+    hsl=""
+    while y!=0:
+        hsl="x"+str(y%10)+hsl
+        y=y//10
+    return hsl[1:]
+eded=int(input("Analiz ucun ededi daxil edin: "))
+s=1
+while eded>=10:
+    print(f"Addim {s}: {cixart(eded)}={hell(eded)}")
+    s+=1
+    eded=hell(eded)
+print("-"*25)
+print(f"Yekun netice: {eded}")
+print(f"Cemi addim sayi: {s-1} ")
+
+####4
+def fakt(x):
+    f=1
+    while x!=0:
+        f=f*x
+        x-=1
+    return f
+
+a=int(input("Start daxil edin: "))
+b=int(input("End daxil edin: "))
+print("Guclu ededler: ")
+for i in range(a,b+1):
+    cem=0
+    s=i
+    while s!=0:
+        cem=cem+fakt(s%10)
+        s=s//10
+    if cem==i:
+        print(i)
+        
+        
+####5
+def ikilik(x):
+    s=0
+    while x!=0:
+        if x%2==1:
+            s+=1
+        x=x//2
+    return s
+def cem(y):
+    c=0
+    while y!=0:
+        c+=y%10
+        y=y//10
+    return c
+a=int(input("Start daxil edin: "))
+b=int(input("End daxil edin: "))
+print("Uygun ededler: ")
+for i in range(a,b+1):
+    if ikilik(i)%2==0 and cem(i)%2==0:
+        print(i)
+
+
+    
+
+
