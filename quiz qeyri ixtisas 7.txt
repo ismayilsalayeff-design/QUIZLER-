@@ -1,0 +1,203 @@
+"""1
+from random import*
+def bubble(x):
+    s=0
+    for i in x:
+        s+=1
+    for i in range(s-1):
+        for j in range(s-2,i-1,-1):
+            if x[j]<x[j+1]:
+                x[j],x[j+1]=x[j+1],x[j]
+    return x
+            
+        
+
+n=int(input())
+a=[[randint(1,20) for j in range(n)] for i in range(n)]
+for i in range(n):
+    for j in range(n):
+        print(f"{a[i][j]:4}",end=" ")
+    print()
+print("-"*25)
+cut=[]
+tek=[]
+for i in range(n):
+    for j in range(n):
+        if j%2==1:
+            tek=tek+[a[i][j]]
+        if i%2==0:
+            cut=cut+[a[i][j]]
+maks=bubble(tek)[0]
+say=0
+for i in cut:
+    say+=1
+mini=bubble(cut)[say-1]
+print((mini+maks)/2)
+"""
+"""2
+def check(x,y):
+    s=0
+    for i in x:
+        if i==y:
+            s+=1
+    if s>1:
+        return False
+    return True
+def bolen(x):
+    d=1
+    for i in range(2,x//2+1):
+        if x%i==0:
+            d=i
+    return d
+
+def my_split(x):
+    bos=""
+    cavab=[]
+    x=x+" "
+    for i in x:
+        if i!=" ":
+            bos=bos+i
+        else:
+            cavab=cavab+[int(bos)]
+            bos=""
+    return cavab
+
+eded=input()
+c=None
+siyah=my_split(eded)
+for i in siyah:
+    if check(siyah,i):
+        c=i
+        break
+if c==None:
+    print("Tekrarlanmayan eded yoxdur")
+else:
+    print(c)
+    print(f"{c} ozunden basqa en boyuk boleni: {bolen(c)}")
+    
+"""
+"""3
+metn = input("Metni daxil edin: ")
+
+netice = ""
+i = 0
+
+while i < len(metn):
+
+    
+    if metn[i] >= "0" and metn[i] <= "9":
+        netice = netice + "(" + metn[i] + ")"
+        i += 1
+
+
+    elif metn[i] == " ":
+        netice = netice + "-"
+        i += 1
+
+    
+    else:
+        say = 1
+        j = i + 1
+
+        while j < len(metn) and metn[j] == metn[i]:
+            say += 1
+            j += 1
+
+        netice = netice + metn[i] + str(say)
+
+        i = j
+
+print("Netice:", netice)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""4
+def cem(x):
+    c=0
+    while x!=0:
+        if x%10%2==0:
+            c=c+x%10
+        x=x//10
+    return c
+def tek(x):
+    h=1
+    while x!=0:
+        if x%10%2==1:
+            h=h*(x%10)
+        x=x//10
+    return h
+
+eded=int(input())
+if cem(eded)<tek(eded):
+    print("Aktiv eded")
+else:
+    print("Passiv eded")
+"""
+
+
+"""5
+def samit(x):
+    s=0
+    herf="zxcvbnmsdfghjklqwrtyp"
+    for i in x:
+        if i in herf:
+            s+=1
+    return s
+def say(x):
+    z=0
+    sait="aioue"
+    for i in x:
+        if i in sait:
+            z+=1
+    return z
+
+def bubble(x):
+    s=0
+    for i in x:
+        s+=1
+    for i in range(s-1):
+        for j in range(s-2,i-1,-1):
+            if samit(x[j+1])<samit(x[j]):
+                x[j+1],x[j]=x[j],x[j+1]
+            elif samit(x[j+1])==samit(x[j]):
+                if say(x[j+1])<say(x[j]):
+                    x[j+1],x[j]=x[j],x[j+1]
+    return x
+
+def split(x):
+    x=x+" "
+    bos=""
+    yekun=[]
+    for i in x:
+        if i!=" ":
+            bos=bos+i
+        else:
+            yekun=yekun+[bos]
+            bos=""
+    return yekun
+    
+            
+soz=input()
+c=split(soz)
+print(bubble(c))
+"""
+
+

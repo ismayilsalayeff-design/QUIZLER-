@@ -1,0 +1,208 @@
+"""1
+def quicksort(x):
+    say=0
+    for i in x:
+        say+=1
+    if say<=1:
+        return x
+    s=x[say//2]
+    b1=[i for i in x if  i<s]
+    b2=[i for i in x if  i==s]
+    b3=[i for i in x if i>s]
+    return quicksort(b1)+b2+quicksort(b3)
+    
+from random import*
+n=int(input())
+a=[[randint(10,20) for j in range(n)] for  i in range(n)]
+for i in range(n):
+    for  j in range(n):
+        print(f"{a[i][j]}",end=" ")
+    print()
+print("-"*25)
+
+siyah=[]
+siyah1=[]
+for i in range(n):
+    for  j in range(n):
+        if i==n-1 or i==0 or j==0 or j==n-1:
+            siyah=siyah+[a[i][j]]
+        if i==j or (i+j)==n-1:
+            siyah1=siyah1+[a[i][j]]
+c1=quicksort(siyah)
+z=0
+for i in c1:
+    z+=1
+    
+c2=quicksort(siyah1)
+netice=c1[z-1]+c2[0]
+print(f"Yekun netice: {netice}")
+"""
+
+
+"""2
+def quicksort(x):
+    say=0
+    for i in x:
+        say+=1
+    if say<=1:
+        return x
+    s=x[say//2]
+    b1=[i for i in x if  i<s]
+    b2=[i for i in x if  i==s]
+    b3=[i for i in x if i>s]
+    return quicksort(b1)+b2+quicksort(b3)
+def my_split(x):
+    yekun=[]
+    x=x+" "
+    bos=""
+    for i in x:
+        if i!=" ":
+            bos+=i
+        else:
+            yekun=yekun+[int(bos)]
+            bos=""
+    return yekun
+
+def ebob(x,y):
+    while x!=y:
+        if x>y:
+            x=x-y
+        else:
+            y=y-x
+    return x
+
+
+a=input()
+c=quicksort(my_split(a))
+d=[]
+v=0
+for i in c:
+    if i not in d:
+        d=d+[i]
+        v+=1
+print(f"Mutleq lider: {d[v-1]}")
+print(F"Vitse-Lider: {d[v-2]}")
+print(f"Analiz : {d[v-1]} ve {d[v-2]} ucun ortaq bolenler tapilir")
+print(f"Gizli kod: {ebob(d[v-1],d[v-2])}")
+"""
+"""3
+def oxu(x):
+    bos=""
+    s=0
+    d=["bad"]
+    for i in x:
+        s+=1
+    if s==3:
+        for i in x:
+            if i>="A" and i<="Z":
+                bos=bos+chr(ord(i)+32)
+            else:
+                bos=bos+i
+        if bos in d:
+            return "good"
+    return x
+def eded(x):
+    return("*"*int(x))
+def my_split(x):
+    yekun=[]
+    x=x+" "
+    bos=""
+    for i in x:
+        if i!=" ":
+            bos+=i
+        else:
+            yekun=yekun+[bos]
+            bos=""
+    return yekun
+soz=input()
+siyah=my_split(soz)
+cavab=""
+for i in siyah:
+    if i>="0" and i<="9":
+        cavab=cavab+eded(i)+" "
+    else:
+        cavab=cavab+oxu(i)+" "
+print(cavab)
+"""
+
+"""4
+def selection(x):
+    c=0
+    for i in x:
+        c+=1
+    for i in range(c-1):
+        mini=i
+        for j in range(i+1,c):
+            if x[mini]<x[j]:
+                mini=j
+        if i!=mini:
+            x[i],x[mini]=x[mini],x[i]
+    return x
+            
+            
+    
+n=int(input())
+s=[]
+n1=n
+say=0
+while n!=0:
+    s=s+[n%10]
+    n=n//10
+    say+=1
+eded=0
+s1=selection(s)
+for i in s1:
+    eded=eded+i*10**(say-1)
+    say-=1
+print(f"Ilkin eded: {n1}")
+print(f"Maksimum eded: {eded}")
+print(f"Ferq: {eded-n1}")
+"""
+"""5
+def my_split(x):
+    yekun=[]
+    x=x+" "
+    bos=""
+    for i in x:
+        if i!=" ":
+            bos+=i
+        else:
+            yekun=yekun+[bos]
+            bos=""
+    return yekun
+def req(x):
+    has=1
+    c=0
+    for i in x:
+        if i>="0" and i<="9":
+            has=has*int(i)
+            c=1
+    if c==0:
+        has=0
+    return has
+def uzun(x):
+    b=0
+    for i in x:
+        b+=1
+    return b
+            
+def bubblesort(x):
+    s=0
+    for i in x:
+        s+=1
+    for i in range(s-1):
+        for j in range(s-2,i-1,-1):
+            if req(x[j])>req(x[j+1]):
+                x[j+1],x[j]=x[j],x[j+1]
+            elif req(x[j])==req(x[j+1]):
+                if uzun(x[j])>uzun(x[j+1]):
+                    x[j+1],x[j]=x[j],x[j+1]
+                
+                
+    return x
+
+soz=input()
+siyah=bubblesort(my_split(soz))
+for i in siyah:
+    print(i,end=" ")
+""""
