@@ -1,0 +1,237 @@
+﻿"""task1
+soz=input("metn= ")
+ayirici=input("ayirici= ")
+yekun=[]
+soz=soz+ayirici
+bos=""
+for i in soz:
+    if i!=ayirici:
+        bos=i+bos
+    else:
+        yekun=[bos]+yekun
+        bos=""
+print(yekun[0]+ayirici+yekun[1])
+"""
+"""task3
+def selection(x):
+    s=0
+    for i in x:
+        s+=1
+    for i in range(s-1):
+        mini=i
+        for j in range(i+1,s):
+            if x[j]<x[mini]:
+                mini=j
+        if i!=mini:
+            x[i],x[mini]=x[mini],x[i]
+    return x
+def my_split(x):
+    x=x+" "
+    bos=""
+    yekun=[]
+    for i in x:
+        if i!=" ":
+            bos=bos+i
+        else:
+            yekun=yekun+[int(bos)]
+            bos=""
+    return yekun
+req=input("list= ")
+s=my_split(req)
+yekun=selection(s)
+bos=[]
+for i in yekun:
+    if i in bos:
+        bos=bos+[0]
+    else:
+        bos=bos+[i]
+print(bos)
+"""
+"""task4
+def selection(x):
+    s=0
+    for i in x:
+        s+=1
+    for i in range(s-1):
+        mini=i
+        for j in range(i+1,s):
+            if x[j]<x[mini]:
+                mini=j
+        if i!=mini:
+            x[i],x[mini]=x[mini],x[i]
+    return x
+from random import*
+n=int(input("Setirleri daxil edin: "))
+m=int(input("Sutunlari daxil edin: "))
+lim=n*m
+a=[[randint(1,10)  for j in range(m)] for i in range(n)]
+for i in  range(n):
+    for j in range(m):
+        print(f"{a[i][j]:4}",end=" ")
+    print()
+print("-"*25)
+ysetir=[]
+yekun=[]
+s=0
+for j in range(m):
+    for i in range(n):
+        if j==s:
+            ysetir=ysetir+[a[i][j]]
+    yekun=yekun+[ysetir]
+    s=s+1
+    ysetir=[]
+for i in range(m):
+    yekun[i]=selection(yekun[i])
+for i in range(m):
+    for j in range(n):
+        print(f"{yekun[i][j]:4}",end=" ")
+    print()
+"""
+"""task5
+def my_split(x):
+    x=x+" "
+    bos=""
+    yekun=[]
+    for i in x:
+        if i!=" ":
+            bos=bos+i
+        else:
+            if bos!="":
+                yekun=yekun+[int(bos)]
+                bos=""
+    return yekun
+def selection(x):
+    s=0
+    for i in x:
+        s+=1
+    for i in range(s-1):
+        mini=i
+        for j in range(i+1,s):
+            if x[j]<x[mini]:
+                mini=j
+        if i!=mini:
+            x[i],x[mini]=x[mini],x[i]
+    return x
+def selectionters(x):
+    s=0
+    for i in x:
+        s+=1
+    for i in range(s-1):
+        mini=i
+        for j in range(i+1,s):
+            if x[j]>x[mini]:
+                mini=j
+        if i!=mini:
+            x[i],x[mini]=x[mini],x[i]
+    return x
+req=input("list= ")
+s=my_split(req)
+s1=selection(s)
+maks=float("-inf")
+say=0
+for i in s:
+    if maks<i:
+        maks=i
+    say+=1
+if say%2==0:
+    s1_sol = selection(s1[0 : say//2])
+    s1_sag = selectionters(s1[say//2 : say])
+    cavab = []
+    for i in range(say // 2):
+        cavab = cavab + [s1_sol[i]] + [s1_sag[i]]
+    cem = 0
+    for i in range(say - 1):
+        cem = cem + abs(cavab[i] - cavab[i+1])
+    print(f"OUTPUT: {cavab},SUM: {cem}")
+else:
+    s1_sol = selection(s1[0 : say//2])
+    s1_sag = selectionters(s1[say//2 + 1 : say])
+    s1_orta = [s1[say//2]]
+    cavab = []
+    for i in range(say // 2):
+        cavab = cavab + [s1_sol[i]] + [s1_sag[i]]
+    cavab = cavab + s1_orta
+    cem = 0
+    for i in range(say - 1):
+        cem = cem + abs(cavab[i] - cavab[i+1])
+    print(f"OUTPUT: {cavab},SUM: {cem}")
+"""
+
+""" task 2
+def my_split(x):
+    x=x+","
+    bos=""
+    yekun=[]
+    
+    for i in x:
+        if i!=",":
+            bos=bos+i
+        else:
+            yekun=yekun+[bos]
+            bos=""
+            
+    return yekun
+
+
+seher="Baku,Ganja,Baku,Sumqayit,Ganja,Baku,Quba"
+seher1=my_split(seher)
+
+tarifler= {"Baku": 5,"Ganja": 12,"Sumqayit": 8}
+
+bos=[]
+dolu=[]
+
+for i in seher1:
+    c=0
+    
+    for j in tarifler:
+        if i==j:
+            c=1
+            
+    if c==0:
+        bos=bos+[i]
+    else:
+        dolu=dolu+[i]
+
+olan=[]
+olmayan=[]
+
+for i in dolu:
+    if i not in olan:
+        olan=olan+[i]
+
+for i in bos:
+    if i not in olmayan:
+        olmayan=olmayan+[i]
+
+yekun={"analiz":{
+    }
+
+
+
+
+       }
+
+for i in olan:
+    say=0
+    
+    for j in dolu:
+        if i==j:
+            say=say+1
+
+    yekun["analiz"][i]={}
+    yekun["analiz"][i]["sayi"]=say
+    yekun["analiz"][i]["Xerc"]=say*tarifler[i]
+
+cem=0
+
+for i in olan:
+    for j in dolu:
+        if i==j:
+            cem=cem+tarifler[i]
+
+yekun["yekun budce"]=cem
+yekun["melumat yoxdur"]=olmayan
+
+print(yekun)
+"""
